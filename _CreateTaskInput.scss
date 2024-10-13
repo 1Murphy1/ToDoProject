@@ -1,0 +1,99 @@
+.createTaskContainer{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: 30px;
+    justify-content: center; 
+    width: 100%;
+    
+    &-common{
+        display: flex;
+        flex-direction: row;
+
+        &-input{
+
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            
+
+            input{
+                width: 400px;
+                height: 28px;
+                margin-bottom: 6px;
+            }
+        }
+
+        button{
+            font-size: 50px;
+            width: 70px;
+            height: 70px;
+            margin-left: 8px;
+            color: #FF8303 ;
+        }
+    
+    }
+}
+
+.task-list{
+    display: flex;  
+    justify-content: center; 
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 30px;
+
+    &-none{
+        color:white;
+        font-size: 20px;
+        border-top: 1px solid #FF8303;
+        border-bottom: 1px solid #FF8303;
+
+    }
+    
+}
+
+.newTask-container{
+    display: flex;
+    width: 460px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    button{
+        height: 32px;
+        width: 32px;
+    }
+
+}
+
+.confirmation-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #FF8303;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.confirmation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    p{
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    bottom: {
+        margin: 5px;
+        padding: 10px 15px;
+        background-color: #FF8303;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
