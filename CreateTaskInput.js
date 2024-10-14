@@ -32,7 +32,7 @@ function CreateTaskInput() {
             const task = document.createElement('div');
             task.className = 'newTask-container yellowOutline';
             task.innerHTML = `
-                <div class="newTask-container_text ">
+                <div class="newTask-container-text ">
                     <h3>${title}</h3>
                     <p>${about}</p>
                 </div>
@@ -48,13 +48,16 @@ function CreateTaskInput() {
 
             deleteButton.addEventListener('click', () => {
                 const confirmation = document.createElement('div');
-                confirmation.className = 'confirmation-dialog';
+                confirmation.className = 'confirmation-dialog yellowOutline';
                 confirmation.innerHTML = `
                     <div class="confirmation-content">
                         <p>Вы уверены, что хотите удалить эту задачу?</p>
-                        <button class="confirm">Да</button>
-                        <button class="cancel">Нет</button>
+                        <div class="confirmation-content-button">
+                            <button class="confirm yellowOutline">Да</button>
+                            <button class="cancel yellowOutline">Нет</button>
+                        </div>
                     </div>
+                    
                 `;
                 document.body.appendChild(confirmation);
 
