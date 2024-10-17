@@ -41,7 +41,8 @@ function CreateTaskInput() {
         if (title && about) {
             const task = { title, about }; 
             const savedTask = storage.addTask(task);
-            addTaskToDOM(savedTask.title, savedTask.about, savedTask.id);         titleInput.value = '';
+            addTaskToDOM(savedTask.title, savedTask.about, savedTask.id);         
+            titleInput.value = '';
             aboutInput.value = '';
 
             noTasksMessage.style.display = 'none'; 
@@ -58,16 +59,12 @@ function CreateTaskInput() {
                 <h3>${title}</h3>
                 <p>${about}</p>
             </div>
+            <button class="yellowOutline deleteButton">x</button>
             <div class="task-action-panel" style="display: none;">
-                <button class="edit">
-                    <img src="./editButton.svg"> 
-                </button>
-                <button class="share">
-                    <img src="./shareButton.svg">    
-                </button>
+                <button class="edit"><img src="./editButton.svg"></button>
+                <button class="share"><img src="./shareButton.svg"></button>
                 <button class="info yellowOutline">i</button>
             </div>
-            <button class="yellowOutline deleteButton">x</button>
         `;
 
         taskList.appendChild(task);
@@ -82,13 +79,15 @@ function CreateTaskInput() {
         deleteButton.addEventListener('click', (e) => {
             e.stopPropagation(); 
             const confirmation = document.createElement('div');
-            confirmation.className = 'confirmation-dialog yellowOutline';
+            confirmation.className = 'confirmation';
             confirmation.innerHTML = `
-                <div class="confirmation-content">
-                    <p>Delete this task?</p>
-                    <div class="confirmation-content-button">
-                        <button class="confirm yellowOutline">Yes</button>
-                        <button class="cancel yellowOutline">No</button>
+                <div class="confirmation-dialog yellowOutline">
+                    <div class="confirmation-content">
+                        <p>Delete this task?</p>
+                        <div class="confirmation-content-button">
+                            <button class="confirm yellowOutline">Yes</button>
+                            <button class="cancel yellowOutline">No</button>
+                        </div>
                     </div>
                 </div>
             `;
