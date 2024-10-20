@@ -52,6 +52,9 @@ function CreateTaskInput() {
     });
 
     function addTaskToDOM(title, about, taskId) {
+        const taskContainer = document.createElement('div');
+        taskContainer.className = 'taskContainer';
+
         const task = document.createElement('div');
         task.className = 'newTask-container yellowOutline';
         task.innerHTML = `
@@ -60,16 +63,22 @@ function CreateTaskInput() {
                 <p>${about}</p>
             </div>
             <button class="yellowOutline deleteButton">x</button>
-            <div class="task-action-panel" style="display: none;">
+        `;
+
+        const actionPanel = document.createElement('div');
+        actionPanel.className = 'task-action-panel' ;
+        actionPanel.style.display = 'none'; 
+        actionPanel.innerHTML = `
+            <div class="task-action-panel-buttons">
                 <button class="edit"><img src="./editButton.svg"></button>
                 <button class="share"><img src="./shareButton.svg"></button>
                 <button class="info yellowOutline">i</button>
             </div>
         `;
 
-        taskList.appendChild(task);
-
-        const actionPanel = task.querySelector('.task-action-panel');
+        taskContainer.appendChild(task);
+        taskContainer.appendChild(actionPanel);
+        taskList.appendChild(taskContainer);
 
         task.addEventListener('click', () => {
             actionPanel.style.display = actionPanel.style.display === 'none' ? 'block' : 'none';
@@ -94,7 +103,7 @@ function CreateTaskInput() {
             document.body.appendChild(confirmation);
 
             confirmation.querySelector('.confirm').addEventListener('click', () => {
-                taskList.removeChild(task);
+                taskList.removeChild(taskContainer);
                 storage.deleteTask(taskId); 
                 if (taskList.children.length === 0) {
                     noTasksMessage.style.display = 'block'; 

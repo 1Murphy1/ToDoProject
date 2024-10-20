@@ -49,11 +49,18 @@ function CreateTaskInput() {
   });
 
   function addTaskToDOM(title, about, taskId) {
+    var taskContainer = document.createElement('div');
+    taskContainer.className = 'taskContainer';
     var task = document.createElement('div');
     task.className = 'newTask-container yellowOutline';
-    task.innerHTML = "\n            <div class=\"newTask-container-text\">\n                <h3>".concat(title, "</h3>\n                <p>").concat(about, "</p>\n            </div>\n            <button class=\"yellowOutline deleteButton\">x</button>\n            <div class=\"task-action-panel\" style=\"display: none;\">\n                <button class=\"edit\"><img src=\"./editButton.svg\"></button>\n                <button class=\"share\"><img src=\"./shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n            </div>\n        ");
-    taskList.appendChild(task);
-    var actionPanel = task.querySelector('.task-action-panel');
+    task.innerHTML = "\n            <div class=\"newTask-container-text\">\n                <h3>".concat(title, "</h3>\n                <p>").concat(about, "</p>\n            </div>\n            <button class=\"yellowOutline deleteButton\">x</button>\n        ");
+    var actionPanel = document.createElement('div');
+    actionPanel.className = 'task-action-panel';
+    actionPanel.style.display = 'none';
+    actionPanel.innerHTML = "\n            <div class=\"task-action-panel-buttons\">\n                <button class=\"edit\"><img src=\"./editButton.svg\"></button>\n                <button class=\"share\"><img src=\"./shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n            </div>\n        ";
+    taskContainer.appendChild(task);
+    taskContainer.appendChild(actionPanel);
+    taskList.appendChild(taskContainer);
     task.addEventListener('click', function () {
       actionPanel.style.display = actionPanel.style.display === 'none' ? 'block' : 'none';
     });
@@ -65,7 +72,7 @@ function CreateTaskInput() {
       confirmation.innerHTML = "\n                <div class=\"confirmation-dialog yellowOutline\">\n                    <div class=\"confirmation-content\">\n                        <p>Delete this task?</p>\n                        <div class=\"confirmation-content-button\">\n                            <button class=\"confirm yellowOutline\">Yes</button>\n                            <button class=\"cancel yellowOutline\">No</button>\n                        </div>\n                    </div>\n                </div>\n            ";
       document.body.appendChild(confirmation);
       confirmation.querySelector('.confirm').addEventListener('click', function () {
-        taskList.removeChild(task);
+        taskList.removeChild(taskContainer);
 
         _storage["default"].deleteTask(taskId);
 

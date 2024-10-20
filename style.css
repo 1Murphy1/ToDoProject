@@ -38,6 +38,7 @@
   margin-top: 30px;
   max-width: 483px;
   width: 100%;
+  padding-left: 20px;
 }
 .task-list-none {
   color: white;
@@ -46,15 +47,22 @@
   border-bottom: 1px solid #FF8303;
 }
 
+.taskContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+  align-items: flex-end;
+}
+
 .newTask-container {
   display: flex;
-  width: calc(100% - 20px);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin-bottom: 10px;
 }
-.newTask-containertext {
+.newTask-container-text {
   display: flex;
   flex-direction: column;
   max-width: 380px;
@@ -62,14 +70,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.newTask-containertext h3 {
+.newTask-container-text h3 {
   margin: 0;
   font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
 }
-.newTask-containertext p {
+.newTask-container-text p {
   margin: 4px 0 0 0;
   font-size: 14px;
   overflow: hidden;
@@ -83,9 +91,7 @@
 
 .take-action-panel {
   display: flex;
-  padding: 50px;
 }
-
 .confirmation {
   position: absolute;
   top: 50%;
