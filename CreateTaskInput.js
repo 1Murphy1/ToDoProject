@@ -70,9 +70,10 @@ function CreateTaskInput() {
         actionPanel.style.display = 'none'; 
         actionPanel.innerHTML = `
             <div class="task-action-panel-buttons ">
-                <button class="edit yellowOutline"><img src="../editButton.svg"></button>
                 <button class="share yellowOutline"><img src="../shareButton.svg"></button>
                 <button class="info yellowOutline">i</button>
+                <button class="edit yellowOutline"><img src="../editButton.svg"></button>
+                
             </div>
         `;
 
@@ -115,6 +116,34 @@ function CreateTaskInput() {
                 document.body.removeChild(confirmation); 
             });
         });
+        const shareButton = actionPanel.querySelector('.share');
+        shareButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showShare();
+        });
+    }
+
+        function showShare() {
+            const share = document.createElement('div');
+            share.className = 'shareContainer';
+            share.innerHTML = `
+                <div class="shareContainer-content"
+                    <div class="shareContainer-content-buttons">
+                        <button class="share-icon"><img src="copyButton.svg"></button>
+                        <button class="share-icon"><img src="vkButton.svg"></button>
+                        <button class="share-icon"><img src="telegramButton.svg"></button>
+                        <button class="share-icon"><img src="whatsappButton.svg"></button>
+                        <button class="share-icon"><img src="facebookButton.svg"></button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(share);
+
+            share.addEventListener('click', (e) => {
+                if (e.target === share) {
+                    document.body.removeChild(share);
+                }
+            });
     }
 }
 
