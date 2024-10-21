@@ -69,9 +69,9 @@ function CreateTaskInput() {
         actionPanel.className = 'task-action-panel' ;
         actionPanel.style.display = 'none'; 
         actionPanel.innerHTML = `
-            <div class="task-action-panel-buttons">
-                <button class="edit"><img src="./editButton.svg"></button>
-                <button class="share"><img src="./shareButton.svg"></button>
+            <div class="task-action-panel-buttons ">
+                <button class="edit yellowOutline"><img src="../editButton.svg"></button>
+                <button class="share yellowOutline"><img src="../shareButton.svg"></button>
                 <button class="info yellowOutline">i</button>
             </div>
         `;

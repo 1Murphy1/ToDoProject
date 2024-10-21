@@ -57,7 +57,7 @@ function CreateTaskInput() {
     var actionPanel = document.createElement('div');
     actionPanel.className = 'task-action-panel';
     actionPanel.style.display = 'none';
-    actionPanel.innerHTML = "\n            <div class=\"task-action-panel-buttons\">\n                <button class=\"edit\"><img src=\"./editButton.svg\"></button>\n                <button class=\"share\"><img src=\"./shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n            </div>\n        ";
+    actionPanel.innerHTML = "\n            <div class=\"task-action-panel-buttons \">\n                <button class=\"edit yellowOutline\"><img src=\"../editButton.svg\"></button>\n                <button class=\"share yellowOutline\"><img src=\"../shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n            </div>\n        ";
     taskContainer.appendChild(task);
     taskContainer.appendChild(actionPanel);
     taskList.appendChild(taskContainer);
