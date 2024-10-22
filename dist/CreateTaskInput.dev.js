@@ -51,6 +51,7 @@ function CreateTaskInput() {
   function addTaskToDOM(title, about, taskId) {
     var taskContainer = document.createElement('div');
     taskContainer.className = 'taskContainer';
+    taskContainer.setAttribute('data-task-id', taskId);
     var task = document.createElement('div');
     task.className = 'newTask-container yellowOutline';
     task.innerHTML = "\n            <div class=\"newTask-container-text\">\n                <h3>".concat(title, "</h3>\n                <p>").concat(about, "</p>\n            </div>\n            <button class=\"yellowOutline deleteButton\">x</button>\n        ");
@@ -91,12 +92,51 @@ function CreateTaskInput() {
       e.stopPropagation();
       showShare();
     });
+    var editButton = actionPanel.querySelector('.edit');
+    editButton.addEventListener('click', function (e) {
+      e.stopPropagation();
+      showEdit(title, about, taskId);
+    });
+  }
+
+  function showEdit(currentTitle, currentAbout, taskId) {
+    var edit = document.createElement('div');
+    edit.className = 'editContainer';
+    edit.innerHTML = "\n            <div class=\"editContainer-content yellowOutline\">\n                <div class=\"editContainer-content-action\">\n                    <input class=\"editTitle yellowOutline\" type=\"text\" value=\"".concat(currentTitle, "\">\n                    <input class=\"editAbout yellowOutline\" type=\"text\" value=\"").concat(currentAbout, "\">\n                    <div class=\"editButtons\">\n                        <button class=\"cancelEdit yellowOutline\">Cancel</button>\n                        <button class=\"saveEdit yellowOutline\">Save</button>\n                    </div>\n                </div>\n            </div>\n        ");
+    document.body.appendChild(edit);
+    var cancelEditButton = edit.querySelector('.cancelEdit');
+    var saveEditButton = edit.querySelector('.saveEdit');
+    cancelEditButton.addEventListener('click', function () {
+      document.body.removeChild(edit);
+    });
+    saveEditButton.addEventListener('click', function () {
+      var newTitle = edit.querySelector('.editTitle').value.trim();
+      var newAbout = edit.querySelector('.editAbout').value.trim();
+
+      if (newTitle && newAbout) {
+        _storage["default"].updateTask(taskId, {
+          title: newTitle,
+          about: newAbout
+        });
+
+        var taskElement = document.querySelector("[data-task-id=\"".concat(taskId, "\"]"));
+
+        if (taskElement) {
+          taskElement.querySelector('h3').textContent = newTitle;
+          taskElement.querySelector('p').textContent = newAbout;
+        }
+
+        document.body.removeChild(edit);
+      } else {
+        alert('Fields cannot be empty.');
+      }
+    });
   }
 
   function showShare() {
     var share = document.createElement('div');
     share.className = 'shareContainer';
-    share.innerHTML = "\n                <div class=\"shareContainer-content\"\n                    <div class=\"shareContainer-content-buttons\">\n                        <button class=\"share-icon\"><img src=\"copyButton.svg\"></button>\n                        <button class=\"share-icon\"><img src=\"vkButton.svg\"></button>\n                        <button class=\"share-icon\"><img src=\"telegramButton.svg\"></button>\n                        <button class=\"share-icon\"><img src=\"whatsappButton.svg\"></button>\n                        <button class=\"share-icon\"><img src=\"facebookButton.svg\"></button>\n                    </div>\n                </div>\n            ";
+    share.innerHTML = "\n            <div class=\"shareContainer-content\"\n                <div class=\"shareContainer-content-buttons\">\n                    <button class=\"share-icon\"><img src=\"copyButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"vkButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"telegramButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"whatsappButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"facebookButton.svg\"></button>\n                </div>\n            </div>\n        ";
     document.body.appendChild(share);
     share.addEventListener('click', function (e) {
       if (e.target === share) {

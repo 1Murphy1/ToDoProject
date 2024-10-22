@@ -22,6 +22,17 @@ class LocalTaskStorage {
         localStorage.setItem(this.storageKey, JSON.stringify(updatedTasks));
         return taskId; 
     }
+    updateTask(taskId, updatedTask) {
+        const tasks = this.getTasks();
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+        if (taskIndex !== -1) {
+            tasks[taskIndex].title = updatedTask.title; 
+            tasks[taskIndex].about = updatedTask.about; 
+            localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+        }
+    }
+
 }
 
 const storage = new LocalTaskStorage();

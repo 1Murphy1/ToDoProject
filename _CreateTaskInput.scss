@@ -201,4 +201,87 @@
                        
         }
     }
+
 }
+
+.editContainer{
+  position: fixed;
+  top: 50%;     
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color:#070707E3;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  &-content{
+    position: fixed;
+    bottom: 0;     
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: #1B1A17;
+    border-radius: 20px 20px 0 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 360px;
+    height: 450px;
+    flex-direction: column;
+
+    &-action{
+      
+      max-width: 330px;
+      width: 100vw;
+      height: 415px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .editTitle{
+        
+        max-width: 330px;
+        width: 100vw;
+        height: 32px;
+        color: #F0E3CA;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+      }
+      .editAbout{
+        max-width: 330px;
+        width: 100vw;
+        height: 343px;
+        color: #F0E3CA;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .editButtons{
+          max-width: 140px;
+          width: 100vw;
+          height: 24px;
+          display: flex;
+          justify-content: space-between;
+
+          button{
+              width: 64px;
+              height: 24px;
+              font-size: 10px;
+              font-weight: 400;
+              color: #D9D9D9;
+          }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+

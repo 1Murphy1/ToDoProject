@@ -48,6 +48,20 @@ function () {
       localStorage.setItem(this.storageKey, JSON.stringify(updatedTasks));
       return taskId;
     }
+  }, {
+    key: "updateTask",
+    value: function updateTask(taskId, updatedTask) {
+      var tasks = this.getTasks();
+      var taskIndex = tasks.findIndex(function (task) {
+        return task.id === taskId;
+      });
+
+      if (taskIndex !== -1) {
+        tasks[taskIndex].title = updatedTask.title;
+        tasks[taskIndex].about = updatedTask.about;
+        localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+      }
+    }
   }]);
 
   return LocalTaskStorage;

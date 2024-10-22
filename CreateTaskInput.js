@@ -54,6 +54,7 @@ function CreateTaskInput() {
     function addTaskToDOM(title, about, taskId) {
         const taskContainer = document.createElement('div');
         taskContainer.className = 'taskContainer';
+        taskContainer.setAttribute('data-task-id', taskId);
 
         const task = document.createElement('div');
         task.className = 'newTask-container yellowOutline';
@@ -121,29 +122,82 @@ function CreateTaskInput() {
             e.stopPropagation();
             showShare();
         });
+
+        const editButton = actionPanel.querySelector('.edit');
+        editButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showEdit(title, about, taskId); 
+        });
+
+
+
     }
 
-        function showShare() {
-            const share = document.createElement('div');
-            share.className = 'shareContainer';
-            share.innerHTML = `
-                <div class="shareContainer-content"
-                    <div class="shareContainer-content-buttons">
-                        <button class="share-icon"><img src="copyButton.svg"></button>
-                        <button class="share-icon"><img src="vkButton.svg"></button>
-                        <button class="share-icon"><img src="telegramButton.svg"></button>
-                        <button class="share-icon"><img src="whatsappButton.svg"></button>
-                        <button class="share-icon"><img src="facebookButton.svg"></button>
+    function showEdit(currentTitle, currentAbout, taskId) {
+        const edit = document.createElement('div');
+        edit.className = 'editContainer';
+        edit.innerHTML = `
+            <div class="editContainer-content yellowOutline">
+                <div class="editContainer-content-action">
+                    <input class="editTitle yellowOutline" type="text" value="${currentTitle}">
+                    <input class="editAbout yellowOutline" type="text" value="${currentAbout}">
+                    <div class="editButtons">
+                        <button class="cancelEdit yellowOutline">Cancel</button>
+                        <button class="saveEdit yellowOutline">Save</button>
                     </div>
                 </div>
-            `;
-            document.body.appendChild(share);
+            </div>
+        `;
+        document.body.appendChild(edit);
 
-            share.addEventListener('click', (e) => {
-                if (e.target === share) {
-                    document.body.removeChild(share);
+        const cancelEditButton = edit.querySelector('.cancelEdit');
+        const saveEditButton = edit.querySelector('.saveEdit');
+
+        cancelEditButton.addEventListener('click', () => {
+            document.body.removeChild(edit); 
+        });
+
+        saveEditButton.addEventListener('click', () => {
+            const newTitle = edit.querySelector('.editTitle').value.trim();
+            const newAbout = edit.querySelector('.editAbout').value.trim();
+
+            if (newTitle && newAbout) {
+                storage.updateTask(taskId, { title: newTitle, about: newAbout });
+
+                const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+                if (taskElement) {
+                    taskElement.querySelector('h3').textContent = newTitle;
+                    taskElement.querySelector('p').textContent = newAbout;
                 }
-            });
+                document.body.removeChild(edit); 
+            }else{
+                alert('Fields cannot be empty.');
+            }
+        });
+    }
+
+
+    function showShare() {
+        const share = document.createElement('div');
+        share.className = 'shareContainer';
+        share.innerHTML = `
+            <div class="shareContainer-content"
+                <div class="shareContainer-content-buttons">
+                    <button class="share-icon"><img src="copyButton.svg"></button>
+                    <button class="share-icon"><img src="vkButton.svg"></button>
+                    <button class="share-icon"><img src="telegramButton.svg"></button>
+                    <button class="share-icon"><img src="whatsappButton.svg"></button>
+                    <button class="share-icon"><img src="facebookButton.svg"></button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(share);
+
+        share.addEventListener('click', (e) => {
+            if (e.target === share) {
+                document.body.removeChild(share);
+            }
+        });
     }
 }
 
