@@ -139,8 +139,8 @@ function CreateTaskInput() {
         edit.innerHTML = `
             <div class="editContainer-content yellowOutline">
                 <div class="editContainer-content-action">
-                    <input class="editTitle yellowOutline" type="text" value="${currentTitle}">
-                    <input class="editAbout yellowOutline" type="text" value="${currentAbout}">
+                    <textarea class="editTitle yellowOutline" rows="2">${currentTitle}</textarea>
+                    <textarea class="editAbout yellowOutline" rows="4">${currentAbout}</textarea>
                     <div class="editButtons">
                         <button class="cancelEdit yellowOutline">Cancel</button>
                         <button class="saveEdit yellowOutline">Save</button>

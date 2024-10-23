@@ -102,7 +102,7 @@ function CreateTaskInput() {
   function showEdit(currentTitle, currentAbout, taskId) {
     var edit = document.createElement('div');
     edit.className = 'editContainer';
-    edit.innerHTML = "\n            <div class=\"editContainer-content yellowOutline\">\n                <div class=\"editContainer-content-action\">\n                    <input class=\"editTitle yellowOutline\" type=\"text\" value=\"".concat(currentTitle, "\">\n                    <input class=\"editAbout yellowOutline\" type=\"text\" value=\"").concat(currentAbout, "\">\n                    <div class=\"editButtons\">\n                        <button class=\"cancelEdit yellowOutline\">Cancel</button>\n                        <button class=\"saveEdit yellowOutline\">Save</button>\n                    </div>\n                </div>\n            </div>\n        ");
+    edit.innerHTML = "\n            <div class=\"editContainer-content yellowOutline\">\n                <div class=\"editContainer-content-action\">\n                    <textarea class=\"editTitle yellowOutline\" rows=\"2\">".concat(currentTitle, "</textarea>\n                    <textarea class=\"editAbout yellowOutline\" rows=\"4\">").concat(currentAbout, "</textarea>\n                    <div class=\"editButtons\">\n                        <button class=\"cancelEdit yellowOutline\">Cancel</button>\n                        <button class=\"saveEdit yellowOutline\">Save</button>\n                    </div>\n                </div>\n            </div>\n        ");
     document.body.appendChild(edit);
     var cancelEditButton = edit.querySelector('.cancelEdit');
     var saveEditButton = edit.querySelector('.saveEdit');
