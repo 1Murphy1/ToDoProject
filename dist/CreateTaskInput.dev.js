@@ -58,7 +58,7 @@ function CreateTaskInput() {
     var actionPanel = document.createElement('div');
     actionPanel.className = 'task-action-panel';
     actionPanel.style.display = 'none';
-    actionPanel.innerHTML = "\n            <div class=\"task-action-panel-buttons \">\n                <button class=\"share yellowOutline\"><img src=\"../shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n                <button class=\"edit yellowOutline\"><img src=\"../editButton.svg\"></button>\n                \n            </div>\n        ";
+    actionPanel.innerHTML = "\n            <div class=\"task-action-panel-buttons \">\n                <button class=\"share yellowOutline\"><img src=\"../icons/shareButton.svg\"></button>\n                <button class=\"info yellowOutline\">i</button>\n                <button class=\"edit yellowOutline\"><img src=\"../icons/editButton.svg\"></button>\n                \n            </div>\n        ";
     taskContainer.appendChild(task);
     taskContainer.appendChild(actionPanel);
     taskList.appendChild(taskContainer);
@@ -136,7 +136,7 @@ function CreateTaskInput() {
   function showShare() {
     var share = document.createElement('div');
     share.className = 'shareContainer';
-    share.innerHTML = "\n            <div class=\"shareContainer-content\"\n                <div class=\"shareContainer-content-buttons\">\n                    <button class=\"share-icon\"><img src=\"copyButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"vkButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"telegramButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"whatsappButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"facebookButton.svg\"></button>\n                </div>\n            </div>\n        ";
+    share.innerHTML = "\n            <div class=\"shareContainer-content\"\n                <div class=\"shareContainer-content-buttons\">\n                    <button class=\"share-icon\"><img src=\"../icons/copyButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"../icons/vkButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"../icons/telegramButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"../icons/whatsappButton.svg\"></button>\n                    <button class=\"share-icon\"><img src=\"../icons/facebookButton.svg\"></button>\n                </div>\n            </div>\n        ";
     document.body.appendChild(share);
     share.addEventListener('click', function (e) {
       if (e.target === share) {

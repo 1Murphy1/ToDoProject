@@ -1,4 +1,4 @@
-import storage from './storage.js'; 
+import storage from '../storage.js'; 
 
 function CreateTaskInput() {
     const container = document.createElement('div');
@@ -71,9 +71,9 @@ function CreateTaskInput() {
         actionPanel.style.display = 'none'; 
         actionPanel.innerHTML = `
             <div class="task-action-panel-buttons ">
-                <button class="share yellowOutline"><img src="../shareButton.svg"></button>
+                <button class="share yellowOutline"><img src="../icons/shareButton.svg"></button>
                 <button class="info yellowOutline">i</button>
-                <button class="edit yellowOutline"><img src="../editButton.svg"></button>
+                <button class="edit yellowOutline"><img src="../icons/editButton.svg"></button>
                 
             </div>
         `;
@@ -183,11 +183,11 @@ function CreateTaskInput() {
         share.innerHTML = `
             <div class="shareContainer-content"
                 <div class="shareContainer-content-buttons">
-                    <button class="share-icon"><img src="copyButton.svg"></button>
-                    <button class="share-icon"><img src="vkButton.svg"></button>
-                    <button class="share-icon"><img src="telegramButton.svg"></button>
-                    <button class="share-icon"><img src="whatsappButton.svg"></button>
-                    <button class="share-icon"><img src="facebookButton.svg"></button>
+                    <button class="share-icon"><img src="../icons/copyButton.svg"></button>
+                    <button class="share-icon"><img src="../icons/vkButton.svg"></button>
+                    <button class="share-icon"><img src="../icons/telegramButton.svg"></button>
+                    <button class="share-icon"><img src="../icons/whatsappButton.svg"></button>
+                    <button class="share-icon"><img src="../icons/facebookButton.svg"></button>
                 </div>
             </div>
         `;
